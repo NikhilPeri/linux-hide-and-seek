@@ -16,7 +16,7 @@ int run_up() {
       cntr = 0;
       printf("you cannot kill me!!\n");
       char file_name[20];
-      sprintf(file_name, "%i-delete.me", rand()%10000);
+      sprintf(file_name, "%i-delete.me", rand()%1000);
       random_file = fopen(file_name, "w+");
       fprintf(random_file, "delete me....without deleting the whole folder");
       fclose(random_file);
@@ -45,7 +45,7 @@ int main() {
     }
     printf("don run random code from the internet!\n");
     printf("writing to the output\n");
-    output = fopen("./output.txt", "w");
+    output = fopen("./3292-output.me", "w");
     for (int i = 0; i < 1000*(rand()%50); i++) {
       fprintf(output, "Not the secret\n");
     }
