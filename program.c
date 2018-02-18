@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <limits.h>
+#include <string.h>
+
 
 int run_up() {
   int p_id = fork();
@@ -23,16 +25,26 @@ int run_up() {
 }
 
 int main() {
-  printf("Running...");
+  printf("Running...\n");
   FILE *input;
   FILE *output;
   input = fopen("./input.txt", "r");
   if (input == NULL) {
-    printf("YOU SKIPPED STEP 1!!!!!");
+    printf("YOU SKIPPED STEP 1!!!!!\n");
+    fclose(output);
+    fclose(input);
     return 0;
   } else {
-    printf("don run random code from the internet!");
-    printf("writing to the output");
+    char line[256];
+    fgets(line, 256, input);
+    if (strstr(line, "false")){
+      printf("YOUR REQUEST IS RETURNING AN ERROR\n");
+      fclose(output);
+      fclose(input);
+      return 0;
+    }
+    printf("don run random code from the internet!\n");
+    printf("writing to the output\n");
     output = fopen("./output.txt", "w");
     for (int i = 0; i < 1000*(rand()%50); i++) {
       fprintf(output, "Not the secret\n");
